@@ -13,8 +13,28 @@ export const ArticlesSection: React.FC = () => {
   const [loading, setLoading] = React.useState(true);
   const [error, setError] = React.useState<string | null>(null);
   const [currentPage, setCurrentPage] = React.useState(0);
+  const [articlesPerPage, setArticlesPerPage] = React.useState(3);
+
+  // Update articlesPerPage based on screen size
+  React.useEffect(() => {
+    const updateArticlesPerPage = () => {
+      const width = window.innerWidth;
+      // md breakpoint is 768px, lg breakpoint is 1024px
+      if (width >= 1024) {
+        setArticlesPerPage(3); // Desktop: 3 articles
+      } else if (width >= 768) {
+        setArticlesPerPage(2); // Tablet: 2 articles
+      } else {
+        setArticlesPerPage(3); // Mobile: 3 articles
+      }
+      setCurrentPage(0); // Reset to first page on resize
+    };
+
+    updateArticlesPerPage();
+    window.addEventListener('resize', updateArticlesPerPage);
+    return () => window.removeEventListener('resize', updateArticlesPerPage);
+  }, []);
   
-  const articlesPerPage = 3;
   const totalPages = Math.ceil(articles.length / articlesPerPage);
   const startIndex = currentPage * articlesPerPage;
   const displayedArticles = articles.slice(startIndex, startIndex + articlesPerPage);
@@ -109,7 +129,7 @@ export const ArticlesSection: React.FC = () => {
                 href={article.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group rounded-xl border border-slate-200 bg-white shadow-sm transition hover:shadow-md dark:border-slate-800 dark:bg-slate-900/40 dark:hover:border-slate-700 overflow-hidden"
+                className="group rounded-xl border border-slate-200 bg-stone-200/50 shadow-sm transition hover:shadow-md dark:border-slate-800 dark:bg-slate-900/40 dark:hover:border-slate-700 overflow-hidden"
               >
                 <article className="flex flex-col">
                   {article.thumbnail && (
@@ -172,7 +192,7 @@ export const ArticlesSection: React.FC = () => {
                     onClick={() => setCurrentPage(i)}
                     className={`h-8 w-8 rounded-lg text-sm font-semibold transition ${
                       currentPage === i
-                        ? 'bg-black text-white shadow-sm dark:bg-black'
+                        ? 'bg-black text-white shadow-sm dark:bg-white dark:text-black'
                         : 'bg-white text-slate-700 shadow-sm hover:bg-stone-700 hover:text-white dark:bg-slate-900 dark:text-slate-300 dark:hover:bg-stone-700 dark:hover:text-white'
                     }`}
                     aria-label={`Go to page ${i + 1}`}

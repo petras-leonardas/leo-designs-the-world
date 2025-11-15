@@ -1,0 +1,15 @@
+name = "leo-designs-the-world"
+compatibility_date = "2024-01-01"
+
+[site]
+bucket = "./dist"
+
+[[rules]]
+type = "Text"
+globs = ["**/*.js", "**/*.mjs"]
+fallthrough = false
+
+[[rules]]
+type = "Text"
+globs = ["**/*.css"]
+fallthrough = false

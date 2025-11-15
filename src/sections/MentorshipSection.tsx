@@ -38,7 +38,7 @@ export const MentorshipSection: React.FC = () => {
           href="https://adplist.org/mentors/leo-bacevicius?utm_source=linkedin&utm_medium=social&utm_campaign=user_profileshare&utm_content=leobacevicius"
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-6 inline-flex items-center gap-2 rounded-lg bg-black px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-stone-700 dark:bg-black dark:hover:bg-stone-700"
+          className="mt-6 inline-flex items-center gap-2 rounded-lg bg-black px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-stone-700 dark:bg-white dark:text-black dark:hover:bg-slate-200"
         >
           Book a Session
           <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
