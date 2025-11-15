@@ -1,17 +1,11 @@
-# Set correct MIME types for all JavaScript files
 /*.js
-  Content-Type: application/javascript; charset=utf-8
+	Content-Type: application/javascript; charset=utf-8
 
 /assets/*.js
-  Content-Type: application/javascript; charset=utf-8
+	Content-Type: application/javascript; charset=utf-8
 
-# Set correct MIME types for all CSS files
 /*.css
-  Content-Type: text/css; charset=utf-8
+	Content-Type: text/css; charset=utf-8
 
 /assets/*.css
-  Content-Type: text/css; charset=utf-8
-
-# Root path headers
-/*
-  X-Content-Type-Options: nosniff
+	Content-Type: text/css; charset=utf-8
